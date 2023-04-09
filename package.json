@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
+    "@dqbd/tiktoken": "^1.0.4",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@huggingface/inference": "^1.7.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
+    "cohere-ai": "^6.2.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "framer-motion": "^6",
@@ -23,6 +26,7 @@
     "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "replicate": "^0.9.0",
     "typescript": "5.0.4"
   },
   "volta": {
