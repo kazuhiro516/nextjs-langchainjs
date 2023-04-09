@@ -2,12 +2,22 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import { runLlm } from '@/utils/llmtest'
+import { runLlm } from '@/pages/api/utils'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  runLlm();
+  const [llmtext, setLlmtext] = useState<string>('');
+  
+  useEffect(() => {
+    runLlm().then(llm => {
+      setLlmtext(llm);
+    }).catch(error => {
+      console.error('An error occurred while running LLM:', error);
+    });
+  }, [llmtext, runLlm()]);
+  
 
   return (
     <>
@@ -43,14 +53,15 @@ export default function Home() {
         </div>
 
         <div className={styles.center}>
-          <Image
+          {/* <Image
             className={styles.logo}
             src="/next.svg"
             alt="Next.js Logo"
             width={180}
             height={37}
             priority
-          />
+          /> */}
+          {llmtext}
         </div>
 
         <div className={styles.grid}>
