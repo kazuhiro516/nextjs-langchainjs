@@ -1,23 +1,33 @@
+<<<<<<< HEAD
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import { runLlm } from '@/pages/api/utils'
 import { useEffect, useState } from 'react'
+=======
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { runLlm } from "@/pages/api/utils";
+import { useEffect, useState } from "react";
+>>>>>>> c66e43664145cc829ab33575b92712c1c39d15cf
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [llmtext, setLlmtext] = useState<string>('');
-  
-  useEffect(() => {
-    runLlm().then(llm => {
-      setLlmtext(llm);
-    }).catch(error => {
-      console.error('An error occurred while running LLM:', error);
-    });
-  }, [llmtext, runLlm()]);
-  
+  const [llmtext, setLlmtext] = useState<string>("");
+
+  const onSwitch = () => {
+    runLlm()
+      .then((llm) => {
+        setLlmtext(llm);
+      })
+      .catch((error) => {
+        console.error("An error occurred while running LLM:", error);
+      });
+  };
 
   return (
     <>
@@ -39,7 +49,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -63,6 +73,9 @@ export default function Home() {
           /> */}
           {llmtext}
         </div>
+        <button className={styles.button} onClick={onSwitch}>
+          Change
+        </button>
 
         <div className={styles.grid}>
           <a
@@ -124,5 +137,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
