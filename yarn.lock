@@ -848,7 +848,7 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.15.tgz#60df64e0ab97d95fee4e6c61ccabd15fd5ace398"
   integrity sha512-WWULIiucYRBIewHKFA7BssQ2ABLHLVd9lrUo3N3SZgR0u4ZRDDVEUNOy+r+9ruDze8+36dGbN9wsN1IdELtdOw==
 
-"@dqbd/tiktoken@^1.0.4":
+"@dqbd/tiktoken@^1.0.2", "@dqbd/tiktoken@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@dqbd/tiktoken/-/tiktoken-1.0.4.tgz#30c61cb5b865e839af88c1014e4ff16f6278e4ce"
   integrity sha512-C0HrJj2RNlsB3wslfNHGNH8xN7QQMki+y4JkUor/GE+oIfPvH7yVep9l1/2powam8AAH6+gdv5MggA5gsszweg==
@@ -1241,6 +1241,11 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
+"@types/retry@0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
+  integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
+
 "@types/scheduler@*":
   version "0.16.3"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.3.tgz#cef09e3ec9af1d63d2a6cc5b383a737e24e6dcf5"
@@ -1461,7 +1466,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-binary-extensions@^2.0.0:
+binary-extensions@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
@@ -2047,11 +2052,6 @@ eventemitter3@^4.0.4:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
-exponential-backoff@^3.1.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/exponential-backoff/-/exponential-backoff-3.1.1.tgz#64ac7526fe341ab18a39016cd22c787d01e00bf6"
-  integrity sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==
-
 expr-eval@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/expr-eval/-/expr-eval-2.0.2.tgz#fa6f044a7b0c93fde830954eb9c5b0f7fbc7e201"
@@ -2479,13 +2479,6 @@ is-bigint@^1.0.1:
   dependencies:
     has-bigints "^1.0.1"
 
-is-binary-path@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
-  integrity sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==
-  dependencies:
-    binary-extensions "^2.0.0"
-
 is-boolean-object@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/is-boolean-object/-/is-boolean-object-1.1.2.tgz#5c6dc200246dd9321ae4b885a114bb1f75f63719"
@@ -2691,22 +2684,22 @@ jsonpointer@^5.0.1:
     array-includes "^3.1.5"
     object.assign "^4.1.3"
 
-langchain@^0.0.51:
-  version "0.0.51"
-  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.51.tgz#429016787965656d1eb5a6ff44a94af8327c960f"
-  integrity sha512-uKjH4NZjiuKXVFfRhHSNEiPpwFb/P34hVpkg6HSFCJ2iynrtLTRNRLLAHbkXb1e2gMZT0cFVrKZuwC59xL13+g==
+langchain@^0.0.52-0:
+  version "0.0.52-0"
+  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.52-0.tgz#6a13484db1cc67ed52a97a62efc83f1ea61fa42e"
+  integrity sha512-GeGQZ0kmHc9H9bJVK4713mNDXJ1/jIptw6s/wcoxihrz+GBpV/uEKJYw1gvQPuej2Txd9CI4t7dwneFn7Vs0dQ==
   dependencies:
     "@anthropic-ai/sdk" "^0.4.2"
-    "@fortaine/fetch-event-source" "^3.0.6"
+    "@dqbd/tiktoken" "^1.0.2"
+    binary-extensions "^2.2.0"
     browser-or-node "^2.1.1"
-    exponential-backoff "^3.1.0"
     expr-eval "^2.0.2"
     flat "^5.0.2"
-    is-binary-path "^2.1.0"
     jsonpointer "^5.0.1"
     object-hash "^3.0.0"
     openai "^3.2.0"
     p-queue "^6.6.2"
+    p-retry "4"
     uuid "^9.0.0"
     yaml "^2.2.1"
     zod "^3.21.4"
@@ -2989,6 +2982,14 @@ p-queue@^6.6.2:
     eventemitter3 "^4.0.4"
     p-timeout "^3.2.0"
 
+p-retry@4:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.6.2.tgz#9baae7184057edd4e17231cee04264106e092a16"
+  integrity sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==
+  dependencies:
+    "@types/retry" "0.12.0"
+    retry "^0.13.1"
+
 p-timeout@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-3.2.0.tgz#c7e17abc971d2a7962ef83626b35d635acf23dfe"
@@ -3204,6 +3205,11 @@ resolve@^2.0.0-next.4:
     is-core-module "^2.9.0"
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
+
+retry@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/retry/-/retry-0.13.1.tgz#185b1587acf67919d63b357349e03537b2484658"
+  integrity sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==
 
 reusify@^1.0.4:
   version "1.0.4"

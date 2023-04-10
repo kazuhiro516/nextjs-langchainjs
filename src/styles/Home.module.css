@@ -34,6 +34,20 @@
   border-radius: var(--border-radius);
 }
 
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background-color: red;
+  border: 1px solid rgba(var(--button-border-rgb), 0.3);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 200ms, border 200ms;
+}
+
 .code {
   font-weight: 700;
   font-family: var(--font-mono);
