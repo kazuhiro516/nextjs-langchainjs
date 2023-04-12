@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@anthropic-ai/sdk@^0.4.2":
+"@anthropic-ai/sdk@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@anthropic-ai/sdk/-/sdk-0.4.3.tgz#372878ad2b86b7e10e047eafd781e3aea69f8a80"
   integrity sha512-SZrlXvjUUYT9rPmSzlTtmVk1OjVNpkCzILRluhiYwNcxXfQyvPJDi0CI6PyymygcgtqEF5EVqhKmC/PtPsNEIw==
@@ -848,7 +848,7 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/visually-hidden/-/visually-hidden-2.0.15.tgz#60df64e0ab97d95fee4e6c61ccabd15fd5ace398"
   integrity sha512-WWULIiucYRBIewHKFA7BssQ2ABLHLVd9lrUo3N3SZgR0u4ZRDDVEUNOy+r+9ruDze8+36dGbN9wsN1IdELtdOw==
 
-"@dqbd/tiktoken@^1.0.2", "@dqbd/tiktoken@^1.0.4":
+"@dqbd/tiktoken@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@dqbd/tiktoken/-/tiktoken-1.0.4.tgz#30c61cb5b865e839af88c1014e4ff16f6278e4ce"
   integrity sha512-C0HrJj2RNlsB3wslfNHGNH8xN7QQMki+y4JkUor/GE+oIfPvH7yVep9l1/2powam8AAH6+gdv5MggA5gsszweg==
@@ -2724,13 +2724,13 @@ jsonpointer@^5.0.1:
     array-includes "^3.1.5"
     object.assign "^4.1.3"
 
-langchain@^0.0.52-0:
-  version "0.0.52-0"
-  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.52-0.tgz#6a13484db1cc67ed52a97a62efc83f1ea61fa42e"
-  integrity sha512-GeGQZ0kmHc9H9bJVK4713mNDXJ1/jIptw6s/wcoxihrz+GBpV/uEKJYw1gvQPuej2Txd9CI4t7dwneFn7Vs0dQ==
+langchain@^0.0.53:
+  version "0.0.53"
+  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.53.tgz#cfe1a906d59c8db07d9222435a12ac215ab58581"
+  integrity sha512-4RHiReKJYitgNxqRVOrKY0d8XWtwjA/ZaCpnuXeuU34BKkAGX+bnLQsjqMp3oiT7INqefuuKPidouZNG7FsZCA==
   dependencies:
-    "@anthropic-ai/sdk" "^0.4.2"
-    "@dqbd/tiktoken" "^1.0.2"
+    "@anthropic-ai/sdk" "^0.4.3"
+    "@dqbd/tiktoken" "^1.0.4"
     binary-extensions "^2.2.0"
     browser-or-node "^2.1.1"
     expr-eval "^2.0.2"
