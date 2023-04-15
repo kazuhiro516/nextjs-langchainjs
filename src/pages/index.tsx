@@ -1,23 +1,29 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.scss'
-import { runLlm } from '@/pages/api/utils'
-import { useEffect, useState } from 'react'
+import { Inter } from "next/font/google";
+import Head from "next/head";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { runLlm } from "@/pages/api/utils";
+import styles from "@/styles/Home.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
+let count = 0;
+
 export default function Home() {
+  const [prompt, setPrompt] = useState<string>("");
   const [llmtext, setLlmtext] = useState<string>("");
 
-  const onSwitch = () => {
-    runLlm()
+  const onSwitch = (prompt: string) => {
+    if (prompt === "") return;
+    runLlm(prompt)
       .then((llm) => {
         setLlmtext(llm);
       })
       .catch((error) => {
         console.error("An error occurred while running LLM:", error);
       });
+    count++;
+    console.log(`count: ${count}`);
   };
 
   return (
@@ -64,10 +70,18 @@ export default function Home() {
           /> */}
           {llmtext}
         </div>
-        <button className={styles.button} onClick={onSwitch}>
-          Change
+        <textarea
+          rows={2}
+          cols={100}
+          onChange={(e) => setPrompt(e.target.value)}
+        />
+        <button
+          className={styles.button}
+          onClick={() => onSwitch(prompt)}
+          disabled={prompt === ""}
+        >
+          送信
         </button>
-
         <div className={styles.grid}>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
