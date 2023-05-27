@@ -1,13 +1,14 @@
 import { Divider, Flex } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Inter } from "next/font/google";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { runChain } from "./api/chain";
+import { passOpenAiModel } from "./api/models/openai";
+import { passPromptTemplate } from "./api/prompts/prompt";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Messages from "@/components/Messages";
 import type { Message } from "@/components/Messages";
-import { runLlm } from "@/pages/api/utils";
 import { dummyMessages } from "@/utils/dummyMessages";
 
 type FormValues = {
@@ -17,8 +18,13 @@ type FormValues = {
 const queryKey: string[] = ["messages"];
 
 const postMessage = async (message: string) => {
-  const data = await runLlm(message);
-  return data;
+  const res = await runChain({
+    variant: message,
+    prompt: passPromptTemplate,
+    model: passOpenAiModel,
+  });
+
+  return res.text;
 };
 
 export default function Home() {
