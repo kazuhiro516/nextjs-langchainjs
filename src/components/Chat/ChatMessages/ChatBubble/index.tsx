@@ -12,9 +12,7 @@ export const ChatBubble = ({ message, isOwnMessage }: ChatBubbleProps) => {
 
   return (
     <Flex w="100%" justify={isOwnMessage ? "flex-end" : "flex-start"}>
-      {!isOwnMessage && (
-        <Avatar icon={<PodIcon boxSize="36px" />} mr="20px"></Avatar>
-      )}
+      {!isOwnMessage && <Avatar mr="20px" />}
       <Box
         maxWidth="70%"
         borderWidth={1}
@@ -42,7 +40,7 @@ export const ChatBubble = ({ message, isOwnMessage }: ChatBubbleProps) => {
         <Text fontSize="md">{message}</Text>
       </Box>
       {isOwnMessage && (
-        <Avatar icon={<AiOutlineUser size="36px" />} ml="16px"></Avatar>
+        <Avatar icon={<AiOutlineUser size="36px" />} ml="16px" />
       )}
     </Flex>
   );
