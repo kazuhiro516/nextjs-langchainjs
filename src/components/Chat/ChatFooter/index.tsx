@@ -1,9 +1,9 @@
 import { Flex, Input, Button } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
 
-type FooterProps = {};
+type ChatFooterProps = {};
 
-const Footer = ({}: FooterProps) => {
+export const ChatFooter = ({}: ChatFooterProps) => {
   const {
     register,
     watch,
@@ -54,5 +54,3 @@ const Footer = ({}: FooterProps) => {
     </Flex>
   );
 };
-
-export default Footer;

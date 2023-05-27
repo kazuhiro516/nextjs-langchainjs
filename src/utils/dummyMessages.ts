@@ -1,4 +1,4 @@
-import { Message } from "@/components/Messages";
+import { Message } from "@/components/Chat/ChatMessages";
 
 type DummyMessages = {
   data: Message[];

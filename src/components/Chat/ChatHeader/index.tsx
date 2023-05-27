@@ -1,8 +1,8 @@
-import { Flex, Avatar, AvatarBadge, Text } from "@chakra-ui/react";
+import { Flex, Avatar, AvatarBadge, Text, IconButton } from "@chakra-ui/react";
 import React from "react";
-import { PodIcon } from "./svg/PodIcon";
+import { PodIcon } from "@/components/Svg/PodIcon";
 
-const Header = () => {
+export const ChatHeader = () => {
   return (
     <Flex w="100%">
       <Avatar size="lg" icon={<PodIcon boxSize="70px" />}>
@@ -17,5 +17,3 @@ const Header = () => {
     </Flex>
   );
 };
-
-export default Header;

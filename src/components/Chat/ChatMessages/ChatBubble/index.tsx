@@ -1,13 +1,13 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 import { AiOutlineUser } from "react-icons/ai";
-import { PodIcon } from "./svg/PodIcon";
+import { PodIcon } from "@/components/Svg/PodIcon";
 
 type ChatBubbleProps = {
   message: string;
   isOwnMessage: boolean;
 };
 
-const ChatBubble = ({ message, isOwnMessage }: ChatBubbleProps) => {
+export const ChatBubble = ({ message, isOwnMessage }: ChatBubbleProps) => {
   const bgColor = isOwnMessage ? "black" : "gray.200";
 
   return (
@@ -47,5 +47,3 @@ const ChatBubble = ({ message, isOwnMessage }: ChatBubbleProps) => {
     </Flex>
   );
 };
-
-export default ChatBubble;
