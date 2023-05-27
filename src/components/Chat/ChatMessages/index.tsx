@@ -1,17 +1,17 @@
 import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
-import ChatBubble from "./ChatBubble";
+import { ChatBubble } from "@/components/Chat/ChatMessages/ChatBubble";
 
 export type Message = {
   from: "me" | "computer";
   text: string;
 };
 
-type MessagesProps = {
+type ChatMessagesProps = {
   messages: Message[];
 };
 
-const Messages = ({ messages }: MessagesProps) => {
+export const ChatMessages = ({ messages }: ChatMessagesProps) => {
   const AlwaysScrollToBottom = () => {
     const elementRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -36,5 +36,3 @@ const Messages = ({ messages }: MessagesProps) => {
     </Flex>
   );
 };
-
-export default Messages;

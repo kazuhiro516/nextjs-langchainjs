@@ -3,7 +3,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
-import { FormProvider } from "react-hook-form";
 
 import theme from "@/utils/theme";
 
