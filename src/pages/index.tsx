@@ -5,8 +5,8 @@ import {
   ChatFooter,
   ChatHeader,
   ChatMessages,
+  type Message,
 } from "@/components/Chat";
-import type { Message } from "@/components/Chat/ChatMessages";
 import { ChatLayout } from "@/components/Layout/ChatLayout";
 import { dummyMessages } from "@/utils/dummyMessages";
 
