@@ -1,4 +1,4 @@
-import { Flex, Avatar, AvatarBadge, Text, IconButton } from "@chakra-ui/react";
+import { Flex, Avatar, AvatarBadge, Text } from "@chakra-ui/react";
 import React from "react";
 import { PodIcon } from "@/components/Svg/PodIcon";
 
