@@ -1,6 +1,6 @@
 import { createIcon } from "@chakra-ui/icons";
 
-export const PodIcon = createIcon({
+const PodIcon = createIcon({
   displayName: "PodIcon",
   viewBox: "0 0 70 70",
   path: (
@@ -33,3 +33,5 @@ export const PodIcon = createIcon({
     </>
   ),
 });
+
+export { PodIcon };
