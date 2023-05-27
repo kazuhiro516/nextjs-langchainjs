@@ -1,6 +1,5 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 import { AiOutlineUser } from "react-icons/ai";
-import { PodIcon } from "@/components/Svg/PodIcon";
 
 type ChatBubbleProps = {
   message: string;
