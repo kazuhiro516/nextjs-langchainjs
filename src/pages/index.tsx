@@ -76,11 +76,12 @@ export default function Home() {
             flexDir="column"
             px="20px"
             pt="40px"
+            pb="20px"
           >
             <Header />
             <Divider borderColor="gray.300" mt="4" />
             <Messages messages={messages} />
-            <Divider />
+            <Divider borderColor="gray.300" />
             <Footer />
           </Flex>
           <Divider
