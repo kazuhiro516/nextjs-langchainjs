@@ -1,7 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { Message } from "@/components/Chat/ChatMessages";
+import { useAuth } from "@/hooks/useAuth";
+import { Database, supabase } from "@/lib/supabase";
+import {
+  TABLE_NAME,
+  addSupabaseData,
+  fetchDatabase,
+} from "@/lib/supabase/functions";
 import { runChain, passOpenAiModel, passPromptTemplate } from "@/pages/api";
 
 type FormValues = {
@@ -27,6 +34,8 @@ const postMessage = async (message: string) => {
 
 export const ChatForm = (props: ChatFormProps) => {
   const { children, setMessages } = props;
+  const { session, profileFromGithub } = useAuth();
+  const [messageText, setMessageText] = useState<Database[]>([]);
 
   const methods = useForm<FormValues>({
     mode: "onChange",
@@ -50,13 +59,61 @@ export const ChatForm = (props: ChatFormProps) => {
       return;
     }
     setMessages((old) => [...old, { from: "me", text: data.message }]);
+    // ユーザーInputのDB登録
+    addSupabaseData({ message: data.message, ...profileFromGithub });
     sendMessage.mutate(data.message, {
-      onSuccess: (data) => {
-        setMessages((old) => [...old, { from: "computer", text: data }]);
+      onSuccess: (res) => {
+        setMessages((old) => [...old, { from: "computer", text: res }]);
+        // responceのDB登録
+        addSupabaseData({
+          message: res,
+          nickName: "computer",
+          avatarUrl: "",
+        });
         reset();
       },
     });
   };
+
+  const fetchRealtimeData = () => {
+    try {
+      supabase
+        .channel("table_postgres_changes")
+        .on(
+          "postgres_changes",
+          {
+            event: "*",
+            schema: "public",
+            table: TABLE_NAME,
+          },
+          (payload) => {
+            if (payload.eventType === "INSERT") {
+              console.log("payload: ", payload);
+              const { createdAt, id, message, avatarUrl, nickName } =
+                payload.new;
+              setMessageText((messageText) => [
+                ...messageText,
+                { createdAt, id, message, avatarUrl, nickName },
+              ]);
+            }
+          }
+        )
+        .subscribe();
+
+      return () => supabase.channel("table_postgres_changes").unsubscribe();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // 初回
+  // useEffect(() => {
+  //   (async () => {
+  //     const allMessage = await fetchDatabase();
+  //     setMessageText(allMessage as Database[]);
+  //   })();
+  //   fetchRealtimeData();
+  // }, []);
 
   return (
     <FormProvider {...methods}>

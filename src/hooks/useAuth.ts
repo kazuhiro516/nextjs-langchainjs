@@ -1,6 +1,6 @@
 import { Session } from "@supabase/supabase-js";
-import { useState, useEffect } from "react";
-import supabase from "@/lib/Supabase";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export function useAuth() {
   const [session, setSession] = useState<Session | null>(null);
@@ -54,6 +54,46 @@ export function useAuth() {
     }
   };
 
+  const signUpEmail = async (email: string, password: string) => {
+    try {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+      if (error) {
+        setError(error.message);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else if (typeof error === "string") {
+        setError(error);
+      } else {
+        console.error("失敗しました。");
+      }
+    }
+  };
+
+  const signInEmail = async (email: string, password: string) => {
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        setError(error.message);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else if (typeof error === "string") {
+        setError(error);
+      } else {
+        console.error("失敗しました。");
+      }
+    }
+  };
+
   const profileFromGithub: {
     nickName: string;
     avatarUrl: string;
@@ -73,8 +113,10 @@ export function useAuth() {
     error,
     session,
     profileFromGithub,
+    signInEmail,
     signInWithGithub,
     signInWithGoogle,
     signOut,
+    signUpEmail,
   };
 }
