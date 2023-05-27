@@ -6,12 +6,13 @@ type DummyMessages = {
 
 export const dummyMessages: DummyMessages = {
   data: [
-    { from: "computer", text: "Hi, My Name is HoneyChat" },
-    { from: "me", text: "Hey there" },
-    { from: "me", text: "Myself Ferin Patel" },
     {
       from: "computer",
-      text: "Nice to meet you. You can send me message and i'll reply you with same message.",
+      text: "わたしの名前はPODです。",
+    },
+    {
+      from: "computer",
+      text: "なにかお困りですか？",
     },
   ],
 };

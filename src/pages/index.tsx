@@ -64,13 +64,30 @@ export default function Home() {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <Flex w="100%" h="100vh" justify="center" align="center">
-          <Flex w="40%" h="90%" flexDir="column">
+          <Divider
+            orientation="vertical"
+            height="100%"
+            borderColor="gray.400"
+          />
+          <Flex
+            maxW="480px"
+            w="100%"
+            h="100%"
+            flexDir="column"
+            px="20px"
+            pt="40px"
+          >
             <Header />
-            <Divider />
+            <Divider borderColor="gray.300" mt="4" />
             <Messages messages={messages} />
             <Divider />
             <Footer />
           </Flex>
+          <Divider
+            orientation="vertical"
+            height="100%"
+            borderColor="gray.400"
+          />
         </Flex>
       </form>
     </FormProvider>
