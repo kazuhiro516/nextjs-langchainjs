@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { Message } from "@/components/Chat/ChatMessages";
 import { useAuth } from "@/hooks/useAuth";
-import { type Database, supabase } from "@/lib/supabase";
+import { type Database } from "@/lib/supabase";
 import {
   TABLE_NAME,
   addSupabaseData,
@@ -75,36 +75,36 @@ export const ChatForm = (props: ChatFormProps) => {
     });
   };
 
-  const fetchRealtimeData = () => {
-    try {
-      supabase
-        .channel("table_postgres_changes")
-        .on(
-          "postgres_changes",
-          {
-            event: "*",
-            schema: "public",
-            table: TABLE_NAME,
-          },
-          (payload) => {
-            if (payload.eventType === "INSERT") {
-              console.log("payload: ", payload);
-              const { createdAt, id, message, avatarUrl, nickName } =
-                payload.new;
-              setMessageText((messageText) => [
-                ...messageText,
-                { createdAt, id, message, avatarUrl, nickName },
-              ]);
-            }
-          }
-        )
-        .subscribe();
+  // const fetchRealtimeData = () => {
+  //   try {
+  //     supabase
+  //       .channel("table_postgres_changes")
+  //       .on(
+  //         "postgres_changes",
+  //         {
+  //           event: "*",
+  //           schema: "public",
+  //           table: TABLE_NAME,
+  //         },
+  //         (payload) => {
+  //           if (payload.eventType === "INSERT") {
+  //             console.log("payload: ", payload);
+  //             const { createdAt, id, message, avatarUrl, nickName } =
+  //               payload.new;
+  //             setMessageText((messageText) => [
+  //               ...messageText,
+  //               { createdAt, id, message, avatarUrl, nickName },
+  //             ]);
+  //           }
+  //         }
+  //       )
+  //       .subscribe();
 
-      return () => supabase.channel("table_postgres_changes").unsubscribe();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     return () => supabase.channel("table_postgres_changes").unsubscribe();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   // 初回
   // useEffect(() => {
