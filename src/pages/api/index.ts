@@ -1,5 +1,4 @@
 import { runChain } from "@/pages/api/chain";
-import { passOpenAiModel } from "@/pages/api/models/openai";
-import { passPromptTemplate } from "@/pages/api/prompts/prompt";
+import { runChat } from "@/pages/api/chat";
 
-export { runChain, passOpenAiModel, passPromptTemplate };
+export { runChain, runChat };

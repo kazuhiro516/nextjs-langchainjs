@@ -3,13 +3,16 @@ import { ReactElement, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { Message } from "@/components/Chat/ChatMessages";
 import { useAuth } from "@/hooks/useAuth";
+// import { passOpenAiModel, passPromptTemplate } from "@/lib/langchain";
+import { passChatOpenAiModel } from "@/lib/langchain";
 import type { Database } from "@/lib/supabase";
 import {
   TABLE_NAME,
   addSupabaseData,
   fetchDatabase,
 } from "@/lib/supabase/functions";
-import { runChain, passOpenAiModel, passPromptTemplate } from "@/pages/api";
+import { runChain, runChat } from "@/pages/api";
+import { dummyChat } from "@/utils/dummyMessages";
 
 type FormValues = {
   message: string;
@@ -23,10 +26,14 @@ type ChatFormProps = {
 const queryKey: string[] = ["messages"];
 
 const postMessage = async (message: string) => {
-  const res = await runChain({
-    variant: message,
-    prompt: passPromptTemplate,
-    model: passOpenAiModel,
+  // const res = await runChain({
+  //   variant: message,
+  //   prompt: passPromptTemplate,
+  //   model: passOpenAiModel,
+  // });
+  const res = await runChat({
+    model: passChatOpenAiModel,
+    messages: dummyChat.filter((message) => message.role !== "generic"),
   });
 
   return res.text;
@@ -45,6 +52,7 @@ export const ChatForm = (props: ChatFormProps) => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = methods;
 
   const queryClient = useQueryClient();
@@ -53,24 +61,26 @@ export const ChatForm = (props: ChatFormProps) => {
       queryClient.invalidateQueries(queryKey);
     },
   });
+  const values = watch();
 
   const onSubmitForm = (data: FormValues) => {
     if (!data.message.trim().length) {
       return;
     }
-    setMessages((old) => [...old, { from: "me", text: data.message }]);
+    setMessages((old) => [...old, { role: "human", text: data.message }]);
     // ユーザーInputのDB登録
     addSupabaseData({ message: data.message, ...profileFromGithub });
+    reset();
+    // 非同期処理
     sendMessage.mutate(data.message, {
       onSuccess: (res) => {
-        setMessages((old) => [...old, { from: "computer", text: res }]);
+        setMessages((old) => [...old, { role: "ai", text: res }]);
         // responceのDB登録
         addSupabaseData({
           message: res,
-          nickName: "computer",
+          nickName: "ai",
           avatarUrl: "",
         });
-        reset();
       },
     });
   };

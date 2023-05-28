@@ -11,11 +11,11 @@ import {
 } from "@/components/Chat";
 import { ChatLayout } from "@/components/Layout/ChatLayout";
 import { useAuth } from "@/hooks/useAuth";
-import { dummyMessages } from "@/utils/dummyMessages";
+import { dummyChat } from "@/utils/dummyMessages";
 
 export default function Home() {
   const { session } = useAuth();
-  const [messages, setMessages] = useState<Message[]>(dummyMessages.data);
+  const [messages, setMessages] = useState<Message[]>(dummyChat);
 
   return (
     <ChatLayout>
