@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import type { Message } from "@/components/Chat/ChatMessages";
 import { useAuth } from "@/hooks/useAuth";
-import { Database, supabase } from "@/lib/supabase";
+import { type Database, supabase } from "@/lib/supabase";
 import {
   TABLE_NAME,
   addSupabaseData,
