@@ -1,5 +1,11 @@
-import { passChatOpenAiModel } from "@/lib/langchain/models/chat_openai";
-import { passOpenAiModel } from "@/lib/langchain/models/openai";
+import { passChatOpenAiModel } from "@/lib/langchain/chat_models/chat_openai";
+import { passOpenAiModel } from "@/lib/langchain/llms/openai";
+import { passOpenAiChatModel } from "@/lib/langchain/llms/openai_chat";
 import { passPromptTemplate } from "@/lib/langchain/prompts/prompt";
 
-export { passChatOpenAiModel, passOpenAiModel, passPromptTemplate };
+export {
+  passChatOpenAiModel,
+  passOpenAiChatModel,
+  passOpenAiModel,
+  passPromptTemplate,
+};

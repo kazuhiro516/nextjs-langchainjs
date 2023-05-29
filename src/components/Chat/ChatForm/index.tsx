@@ -4,14 +4,14 @@ import { FormProvider, useForm } from "react-hook-form";
 import type { Message } from "@/components/Chat/ChatMessages";
 import { useAuth } from "@/hooks/useAuth";
 // import { passOpenAiModel, passPromptTemplate } from "@/lib/langchain";
-import { passChatOpenAiModel } from "@/lib/langchain";
+import { passChatOpenAiModel, passOpenAiChatModel } from "@/lib/langchain";
 import type { Database } from "@/lib/supabase";
 import {
   TABLE_NAME,
   addSupabaseData,
   fetchDatabase,
 } from "@/lib/supabase/functions";
-import { runChain, runChat } from "@/pages/api";
+import { runChain, runChat, runChatllm } from "@/pages/api";
 import { dummyChat } from "@/utils/dummyMessages";
 
 type FormValues = {
@@ -31,12 +31,18 @@ const postMessage = async (message: string) => {
   //   prompt: passPromptTemplate,
   //   model: passOpenAiModel,
   // });
-  const res = await runChat({
-    model: passChatOpenAiModel,
-    messages: dummyChat.filter((message) => message.role !== "generic"),
+  const res = await runChatllm({
+    model: passOpenAiChatModel,
+    message,
+    prefixMessages: [
+      {
+        role: "system",
+        content: "Please reply in Japanese.",
+      },
+    ],
   });
 
-  return res.text;
+  return res;
 };
 
 export const ChatForm = (props: ChatFormProps) => {
