@@ -81,16 +81,17 @@ export const ChatForm = (props: ChatFormProps) => {
     sendMessage.mutate(data.message, {
       onSuccess: (res) => {
         setMessages((old) => [...old, { role: "ai", text: res }]);
-        // responceのDB登録
-        addSupabaseData({
-          message: res,
-          nickName: "ai",
-          avatarUrl: "",
-        });
+        // TODO responceのDB登録
+        // addSupabaseData({
+        //   message: res,
+        //   nickName: "ai",
+        //   avatarUrl: "",
+        // });
       },
     });
   };
 
+  // TODO supabaseのrealtime eventを利用してDBを更新する
   // const fetchRealtimeData = () => {
   //   try {
   //     supabase
@@ -115,14 +116,14 @@ export const ChatForm = (props: ChatFormProps) => {
   //         }
   //       )
   //       .subscribe();
-
+  //
   //     return () => supabase.channel("table_postgres_changes").unsubscribe();
   //   } catch (error) {
   //     console.error(error);
   //   }
   // };
 
-  // 初回
+  // TODO 初回のDB取得はuseEffectで行う
   // useEffect(() => {
   //   (async () => {
   //     const allMessage = await fetchDatabase();
