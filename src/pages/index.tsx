@@ -1,5 +1,7 @@
 import { Divider, Flex } from "@chakra-ui/react";
 import { useState } from "react";
+import { SignIn } from "@/components/Auth/SignIn";
+
 import {
   ChatForm,
   ChatFooter,
@@ -8,43 +10,48 @@ import {
   type Message,
 } from "@/components/Chat";
 import { ChatLayout } from "@/components/Layout/ChatLayout";
-import { dummyMessages } from "@/utils/dummyMessages";
+import { useAuth } from "@/hooks/useAuth";
+import { dummyChat } from "@/utils/dummyMessages";
 
 export default function Home() {
-  const [messages, setMessages] = useState<Message[]>(dummyMessages.data);
+  const { session } = useAuth();
+  const [messages, setMessages] = useState<Message[]>(dummyChat);
 
   return (
     <ChatLayout>
-      <ChatForm setMessages={setMessages}>
-        <Flex w="100%" h="100vh" justify="center" align="center">
-          <Divider
-            orientation="vertical"
-            height="100%"
-            borderColor="gray.400"
-          />
-          <Flex
-            maxW="480px"
-            w="100%"
-            h="100%"
-            flexDir="column"
-            px="20px"
-            pt="80px"
-            pb="20px"
-            pos="relative"
-          >
-            <ChatHeader />
-            <Divider borderColor="gray.300" mt="4" />
-            <ChatMessages messages={messages} />
-            <Divider borderColor="gray.300" />
-            <ChatFooter />
+      <>
+        <SignIn />
+        <ChatForm setMessages={setMessages}>
+          <Flex w="100%" h="100vh" justify="center" align="center">
+            <Divider
+              orientation="vertical"
+              height="100%"
+              borderColor="gray.400"
+            />
+            <Flex
+              maxW="480px"
+              w="100%"
+              h="100%"
+              flexDir="column"
+              px="20px"
+              pt="80px"
+              pb="20px"
+              pos="relative"
+            >
+              <ChatHeader />
+              <Divider borderColor="gray.300" mt="4" />
+              <ChatMessages messages={messages} />
+              <Divider borderColor="gray.300" />
+              <ChatFooter />
+            </Flex>
+            <Divider
+              orientation="vertical"
+              height="100%"
+              borderColor="gray.400"
+            />
           </Flex>
-          <Divider
-            orientation="vertical"
-            height="100%"
-            borderColor="gray.400"
-          />
-        </Flex>
-      </ChatForm>
+        </ChatForm>
+      </>
     </ChatLayout>
   );
 }

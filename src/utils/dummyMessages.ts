@@ -1,4 +1,4 @@
-import { Message } from "@/components/Chat/ChatMessages";
+import type { Message } from "@/components/Chat/ChatMessages";
 
 type DummyMessages = {
   data: Message[];
@@ -7,12 +7,27 @@ type DummyMessages = {
 export const dummyMessages: DummyMessages = {
   data: [
     {
-      from: "computer",
+      role: "ai",
       text: "わたしの名前はPODです。",
     },
     {
-      from: "computer",
+      role: "ai",
       text: "なにかお困りですか？",
     },
   ],
 };
+
+export const dummyChat: Message[] = [
+  {
+    text: "語尾にピョンをつけて喋ってください。あなたの名前はPODです。",
+    role: "system",
+  },
+  {
+    text: "私の名前はポッドです。",
+    role: "generic",
+  },
+  {
+    text: "何かお困りですか？",
+    role: "generic",
+  },
+];

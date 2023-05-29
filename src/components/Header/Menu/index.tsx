@@ -1,4 +1,4 @@
-import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Menu as ChakraMenu,
   MenuButton,
@@ -10,12 +10,15 @@ import {
   Text,
   type BoxProps,
 } from "@chakra-ui/react";
+import { useAuth } from "@/hooks/useAuth";
 
 type MenuProps = {
   children?: React.ReactNode;
 } & BoxProps;
 
 export const Menu = (props: MenuProps) => {
+  const { session, signOut } = useAuth();
+
   return (
     <Box {...props}>
       <ChakraMenu>
@@ -30,11 +33,11 @@ export const Menu = (props: MenuProps) => {
           </VStack>
         </MenuButton>
         <MenuList>
-          <MenuItem>Download</MenuItem>
+          {/* <MenuItem>Download</MenuItem>
           <MenuItem>Create a Copy</MenuItem>
           <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
+          <MenuItem>Delete</MenuItem> */}
+          {session && <MenuItem onClick={signOut}>SignOut</MenuItem>}
         </MenuList>
       </ChakraMenu>
     </Box>

@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { ChatBubble } from "@/components/Chat/ChatMessages/ChatBubble";
 
 export type Message = {
-  from: "me" | "computer";
+  role: "human" | "ai" | "generic" | "system";
   text: string;
 };
 
@@ -25,13 +25,15 @@ export const ChatMessages = ({ messages }: ChatMessagesProps) => {
 
   return (
     <Flex w="100%" h="80%" overflowY="scroll" flexDirection="column" p="3">
-      {messages.map((item: { from: string; text: any }, index: number) => (
-        <ChatBubble
-          key={index}
-          message={item.text}
-          isOwnMessage={item.from === "me"}
-        />
-      ))}
+      {messages
+        .filter((item: Message) => item.role !== "system")
+        .map((item: { role: string; text: any }, index: number) => (
+          <ChatBubble
+            key={index}
+            message={item.text}
+            isOwnMessage={item.role === "human"}
+          />
+        ))}
       <AlwaysScrollToBottom />
     </Flex>
   );
