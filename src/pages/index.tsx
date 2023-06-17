@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <ChatLayout>
       <>
-        <SignIn />
+        {/* <SignIn /> */}
         <ChatForm setMessages={setMessages}>
           <Flex w="100%" h="100vh" justify="center" align="center">
             <Divider
