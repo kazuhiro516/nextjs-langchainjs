@@ -7,7 +7,7 @@ type LayoutProps = Required<{
 
 export const ChatLayout = ({ children }: LayoutProps) => (
   <>
-    <Header />
+    {/* <Header /> */}
     {children}
   </>
 );
